@@ -60,8 +60,9 @@ const AddressSelect = ({ onChange }) => {
 
   // Callback for form
   const handleChange = (newAddress) => {
-    setAddress(newAddress ? newAddress.value : null);
-    onChange && onChange(newAddress);
+    const newVal = newAddress ? newAddress.value : null;
+    setAddress(newVal);
+    onChange && onChange(newVal);
   };
 
   return (
