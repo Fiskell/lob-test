@@ -42,5 +42,14 @@ export default class lobApi {
   }
 
   // --------- POST CARD ENDPOINTS --------- //
-  async createPostCard() {}
+  async createPostCard(form) {
+    const { description, to, from, front, back } = form;
+    return this.instance.post("/postcards", {
+      description,
+      to: to.id ? to.id : to,
+      from: from.id ? from.id : from,
+      front,
+      back,
+    });
+  }
 }
