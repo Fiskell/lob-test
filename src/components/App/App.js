@@ -1,12 +1,11 @@
 import React from "react";
 import logo from "assets/logo.svg";
 import NewPostCardForm from "components/PostCard/NewPostCardForm";
-import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <NewPostCardForm />
+    <div className="h-screen flex items-center justify-center bg-blue-100">
+      <NewPostCardForm className="" />
     </div>
   );
 }
