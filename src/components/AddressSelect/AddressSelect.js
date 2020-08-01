@@ -46,7 +46,6 @@ const AddressSelect = ({ onChange }) => {
           });
         });
         callback(newOptions);
-        return newOptions;
       },
       (err) => {
         console.log("err: ", err);
