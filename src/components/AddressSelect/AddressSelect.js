@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import AsyncSelect from "react-select/async";
 import lobApi from "api/lobApi";
 import _ from "lodash";
@@ -46,6 +46,7 @@ const AddressSelect = ({ onChange }) => {
           });
         });
         callback(newOptions);
+        return newOptions;
       },
       (err) => {
         console.log("err: ", err);
@@ -83,7 +84,7 @@ const SingleValue = (props) => {
 };
 
 const Option = (props) => {
-  const { data, getStyles, innerRef, innerProps } = props;
+  const { data, innerProps } = props;
   const addr = data.value;
 
   return (

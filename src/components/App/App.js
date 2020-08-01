@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "assets/logo.svg";
 import NewPostCardForm from "components/PostCard/NewPostCardForm";
 
 function App() {

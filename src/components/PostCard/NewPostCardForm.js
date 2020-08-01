@@ -45,6 +45,7 @@ const NewPostCardForm = () => {
       },
       (err) => {
         console.log(err);
+
         setResponse({
           success: false,
           message: err.response.data.error.message,

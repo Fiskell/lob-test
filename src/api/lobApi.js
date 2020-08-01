@@ -46,8 +46,8 @@ export default class lobApi {
     const { description, to, from, front, back } = form;
     return this.instance.post("/postcards", {
       description,
-      to: to.id ? to.id : to,
-      from: from.id ? from.id : from,
+      to: to && to.id ? to.id : to,
+      from: to && from.id ? from.id : from,
       front,
       back,
     });
