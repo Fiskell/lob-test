@@ -83,13 +83,16 @@ const SingleValue = (props) => {
 };
 
 const Option = (props) => {
-  const { data, innerProps } = props;
+  const { data, isFocused, innerProps } = props;
+  // debugger;
   const addr = data.value;
 
   return (
     <div
       {...innerProps}
-      className="cursor-pointer flex flex-grow items-center border-b py-2 px-4 hover:bg-blue-200"
+      className={`cursor-pointer flex flex-grow items-center border-b py-2 px-4 hover:bg-blue-200 ${
+        isFocused ? "bg-blue-200" : ""
+      }`}
     >
       <div className="flex-grow flex flex-col">
         <div className="text-md mb-1">{addr.name}</div>
