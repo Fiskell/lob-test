@@ -48,7 +48,7 @@ export default class lobApi {
     return this.sdk.postcards.create({
       description,
       to: to && to.id ? to.id : to,
-      from: to && from.id ? from.id : from,
+      from: from && from.id ? from.id : from,
       front,
       back,
     });
