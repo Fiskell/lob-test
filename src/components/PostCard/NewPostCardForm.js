@@ -18,17 +18,23 @@ const FIELDS = {
   BACK: "back",
 };
 const NewPostCardForm = () => {
-  const [form, setForm] = useState({
+  const initialForm = {
     [FIELDS.DESCRIPTION]: "",
     [FIELDS.TO]: null,
     [FIELDS.FROM]: null,
     [FIELDS.FRONT]: "",
     [FIELDS.BACK]: "",
-  });
+  };
+  const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
   const setField = (field, val) => {
+    // Let's clear the response if it was a success,
+    // if it's an error, let's keep showing
+    if (response && response.success) {
+      setResponse(null);
+    }
     setForm({ ...form, [field]: val });
   };
 
@@ -45,10 +51,9 @@ const NewPostCardForm = () => {
       },
       (err) => {
         console.log(err);
-
         setResponse({
           success: false,
-          message: err.response.data.error.message,
+          message: err.message,
         });
         setLoading(false);
       }
@@ -73,13 +78,17 @@ const NewPostCardForm = () => {
         {/* To address */}
         <FormGroup>
           <FormLabel>To:</FormLabel>
-          <AddressSelect onChange={(address) => setField(FIELDS.TO, address)} />
+          <AddressSelect
+            value={form.to}
+            onChange={(address) => setField(FIELDS.TO, address)}
+          />
         </FormGroup>
 
         {/* From address */}
         <FormGroup>
           <FormLabel>From:</FormLabel>
           <AddressSelect
+            value={form.from}
             onChange={(address) => setField(FIELDS.FROM, address)}
           />
         </FormGroup>

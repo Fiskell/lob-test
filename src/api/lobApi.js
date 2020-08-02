@@ -1,4 +1,5 @@
 import axios from "axios";
+import lob from "lob";
 
 const lobBaseUrl = "https://api.lob.com/v1/";
 
@@ -11,11 +12,9 @@ const SEARCH_TYPES = {
   AREAS: "areas",
 };
 
+const TEST_API_KEY = "test_8ddaad35dc02260ae8a4e6e33d9f3ade7ae";
 export default class lobApi {
-  constructor(
-    username = "test_8ddaad35dc02260ae8a4e6e33d9f3ade7ae",
-    password = ""
-  ) {
+  constructor(username = TEST_API_KEY, password = "") {
     this.instance = axios.create({
       baseURL: lobBaseUrl,
       auth: {
@@ -23,6 +22,8 @@ export default class lobApi {
         password,
       },
     });
+
+    this.sdk = new lob(TEST_API_KEY);
   }
 
   // --------- SEARCH ENDPOINTS ------------ //
@@ -44,7 +45,7 @@ export default class lobApi {
   // --------- POST CARD ENDPOINTS --------- //
   async createPostCard(form) {
     const { description, to, from, front, back } = form;
-    return this.instance.post("/postcards", {
+    return this.sdk.postcards.create({
       description,
       to: to && to.id ? to.id : to,
       from: to && from.id ? from.id : from,
