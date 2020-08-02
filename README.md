@@ -4,10 +4,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory run the following:
 
-1)
+### 1) `npm install`
 
-### `npm install`
+### 2) `npm start`
 
-2)
+## A bit about the project
 
-### `npm start`
+Here is what I used for the project:
+
+Initial project: create-react-app
+
+Styling: TailwindCSS
+
+Advanced Dropdown: react-select
+
+APIs
+Axios for /search
+Lob SDK for postcard create
